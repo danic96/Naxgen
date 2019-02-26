@@ -25,7 +25,7 @@ SECRET_KEY = 'c9yfdsxu-%yhy%&6qn@da@pcyx*70i6z)lw%j$eusute&t6css'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -54,7 +54,7 @@ ROOT_URLCONF = 'Naxgen.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'), os.path.join(os.path.dirname(__file__), '../templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
