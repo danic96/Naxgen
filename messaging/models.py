@@ -8,7 +8,7 @@ from datetime import date
 class Author(models.Model):
     user = models.OneToOneField(User, null=True, blank=True, on_delete=models.PROTECT)
     date = models.DateField(default=date.today)
-    friends = models.ManyToManyField("self")
+    friends = models.ManyToManyField("self", blank=True)
 
 
 class Message(models.Model):

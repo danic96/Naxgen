@@ -11,7 +11,7 @@ class AuthorForm(ModelForm):
 class MessageForm(ModelForm):
     class Meta:
         model = Message
-        exclude = ('date', 'id',)
+        exclude = ('date', 'id', 'sender',)
 
 
 class GroupForm(ModelForm):
