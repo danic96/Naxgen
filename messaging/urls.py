@@ -15,7 +15,13 @@ urlpatterns = [
             template_name='messaging/message_list.html'),
         name='message_list'),
 
+    # URL FOR SENDING A MESSAGE
     url(r'^message/create/$',
         MessageCreate.as_view(),
         name='message_create'),
+
+    # URL FOR CREATING USER
+    #url(r'^user/create/$',
+    #    AuthorCreate.as_view(),
+    #    name='user_create'),
 ]
