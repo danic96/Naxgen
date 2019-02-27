@@ -1,0 +1,14 @@
+{% extends "messaging/base.html" %}
+{% block content %}
+<h1>
+    Messages
+    {% if user %}(<a href="{% url 'messaging:message_create' %}">add</a>){% endif %}
+</h1>
+<ul>
+    {% for message in latest_message_list %}
+        <li><a href="{% url 'messaging:message_detail' message.id %}">
+            {{ message.name }}</a></li>
+    {% empty %}<li>Sorry, no messages registered yet.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

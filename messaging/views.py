@@ -19,3 +19,13 @@ class AuthorCreate(CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super(AuthorCreate, self).form_valid(form)
+
+
+class MessageCreate(CreateView):
+    model = Message
+    template_name = 'messaging/form.html'
+    form_class = MessageForm
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(MessageCreate, self).form_valid(form)
