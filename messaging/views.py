@@ -10,16 +10,16 @@ from messaging.forms import *
 
 # Create your views here.
 
-"""
-class AuthorCreate(CreateView):
-    model = Author
+
+class UserCreate(CreateView):
+    model = User
     template_name = 'messaging/form.html'
-    form_class = AuthorForm
+    form_class = UserForm
 
     def form_valid(self, form):
         form.instance.user = self.request.user
-        return super(AuthorCreate, self).form_valid(form)
-"""
+        return super(UserCreate, self).form_valid(form)
+
 
 
 class MessageCreate(CreateView):
@@ -28,5 +28,5 @@ class MessageCreate(CreateView):
     form_class = MessageForm
 
     def form_valid(self, form):
-        form.instance.user = self.request.user
+        form.instance.sender = self.request.user
         return super(MessageCreate, self).form_valid(form)

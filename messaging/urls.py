@@ -21,7 +21,7 @@ urlpatterns = [
         name='message_create'),
 
     # URL FOR CREATING USER
-    #url(r'^user/create/$',
-    #    AuthorCreate.as_view(),
-    #    name='user_create'),
+    url(r'^user/create/$',
+        UserCreate.as_view(),
+        name='user_create'),
 ]

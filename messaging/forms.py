@@ -2,12 +2,13 @@ from django.forms import ModelForm
 from messaging.models import *
 
 
-"""
-class AuthorForm(ModelForm):
+class UserForm(ModelForm):
     class Meta:
-        model = Author
-        exclude = ('date',)
-"""
+        model = User
+        exclude = ('date',
+                   'groups', 'user_permissions', 'last_login', 'is_superuser',
+                   'is_staff', 'friends', 'is_active', 'date_joined'
+                   )
 
 
 class MessageForm(ModelForm):

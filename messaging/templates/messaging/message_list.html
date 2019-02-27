@@ -6,8 +6,11 @@
 </h1>
 <ul>
     {% for message in latest_message_list %}
-        <li><a href="{% url 'messaging:message_detail' message.id %}">
-            {{ message.name }}</a></li>
+        {% if user.username == message.to.username %}
+            <li><a href="">
+                {{ message.id }}</a>
+            </li>
+        {% endif %}
     {% empty %}<li>Sorry, no messages registered yet.</li>
     {% endfor %}
 </ul>
