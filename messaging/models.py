@@ -18,7 +18,10 @@ class Author(models.Model):
 class User(AbstractUser):
     date = models.DateField(default=date.today)
     friends = models.ManyToManyField("self", blank=True)
-    pass
+
+    def get_absolute_url(self):
+        return reverse('messaging:message_list',
+            kwargs={})
 
 
 class Message(models.Model):

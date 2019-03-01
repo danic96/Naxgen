@@ -8,6 +8,8 @@ from messaging.models import *
 
 from messaging.forms import *
 
+from django.http import HttpResponseRedirect
+
 # Create your views here.
 
 
@@ -29,4 +31,6 @@ class MessageCreate(CreateView):
 
     def form_valid(self, form):
         form.instance.sender = self.request.user
-        return super(MessageCreate, self).form_valid(form)
+        # return super(MessageCreate, self).form_valid(form)
+
+        return HttpResponseRedirect('/messaging')

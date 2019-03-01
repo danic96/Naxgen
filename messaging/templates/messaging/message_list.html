@@ -2,7 +2,7 @@
 {% block content %}
 <h1>
     Messages
-    {% if user %}(<a href="{% url 'messaging:message_create' %}">add</a>){% endif %}
+    {% if user.username %}(<a href="{% url 'messaging:message_create' %}">add</a>){% endif %}
 </h1>
 <ul>
     {% for message in latest_message_list %}
