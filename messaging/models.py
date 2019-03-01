@@ -6,6 +6,7 @@ from django.contrib.auth.models import AbstractUser
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
+
 # Create your models here.
 
 
@@ -19,7 +20,8 @@ class User(AbstractUser):
 
 class Message(models.Model):
     id = models.AutoField(primary_key=True)
-    date = models.DateField(default=date.today)
+    # date = models.DateTimeField(default=date.ctime(date.today().strftime('%Y-%m-%d %H:%M:[%S[%f]][%z]')))
+    date = models.DateTimeField(default=date.today())
     text = models.TextField()
     sender = models.ForeignKey(User, on_delete=models.PROTECT, related_name='sender')
     to = models.ForeignKey(User, on_delete=models.PROTECT, related_name='to')

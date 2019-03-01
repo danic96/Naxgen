@@ -1,7 +1,7 @@
 {% extends "messaging/base.html" %}
 {% block content %}
 
-    <h2>Date: {{ message.date }}</h2>
+    <h2>Date: {{ message.date|date:'Y-m-d H:i' }}</h2>
 <h2>Content:</h2>
 <p>
     {{ message.text|linebreaks }}<br/>
