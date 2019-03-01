@@ -3,6 +3,7 @@ from django.db import models
 from datetime import date
 
 from django.contrib.auth.models import AbstractUser
+from django.http import HttpResponseRedirect
 from django.urls import reverse
 
 # Create your models here.
@@ -20,8 +21,7 @@ class User(AbstractUser):
     friends = models.ManyToManyField("self", blank=True)
 
     def get_absolute_url(self):
-        return reverse('messaging:message_list',
-            kwargs={})
+        return reverse('messaging:message_list', kwargs={})
 
 
 class Message(models.Model):
@@ -32,8 +32,7 @@ class Message(models.Model):
     to = models.OneToOneField(User, on_delete=models.PROTECT, related_name='to', default=None)
 
     def get_absolute_url(self):
-        return reverse('messaging:message_list',
-            kwargs={})
+        return reverse('messaging:message_list', kwargs={})
 
 
 class Group(models.Model):

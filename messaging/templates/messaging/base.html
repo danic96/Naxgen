@@ -19,7 +19,7 @@
             <p>
                 <a href="{% url 'login' %}?next={{request.path}}">Login</a>
                 /
-                <a href="{% url 'messaging:user_create' %}?next={{request.path}}">Register</a>
+                <a href="{% url 'messaging:user_create' %}">Register</a>
             </p>
         {% endif %}
     {% endblock %}

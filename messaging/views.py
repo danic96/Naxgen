@@ -23,7 +23,6 @@ class UserCreate(CreateView):
         return super(UserCreate, self).form_valid(form)
 
 
-
 class MessageCreate(CreateView):
     model = Message
     template_name = 'messaging/form.html'
@@ -31,6 +30,4 @@ class MessageCreate(CreateView):
 
     def form_valid(self, form):
         form.instance.sender = self.request.user
-        # return super(MessageCreate, self).form_valid(form)
-
-        return HttpResponseRedirect('/messaging')
+        return super(MessageCreate, self).form_valid(form)
