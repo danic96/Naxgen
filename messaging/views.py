@@ -41,6 +41,16 @@ class MessageCreate(CreateView):
         return super(MessageCreate, self).form_valid(form)
 
 
+class GroupCreate(CreateView):
+    model = Group
+    template_name = 'messaging/form.html'
+    form_class = GroupForm
+    
+    def form_valid(self, form):
+        form.instance.sender = self.request.user
+        return super(GroupCreate, self).form_valid(form)
+
+
 class MessageDetail(DetailView):
     model = Message
     template_name = 'messaging/message_detail.html'

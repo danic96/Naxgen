@@ -28,9 +28,19 @@
 <div id="sidebar">
     {% block sidebar %}
         <ul>
-            <li><a href="/messaging/">Home</a></li>
+            <h1><li><a href="/messaging/">Home</a></li></h1>
             {% if user.username %}
-                <h1>CHAT</h1>
+                <h1>CHATS</h1>
+                <h3><a href="{% url 'messaging:group_create' %}" >Create chat</a></h3>
+
+                {% for group in groups %}
+                    <ul>
+                        <li>
+                            {{ group.name }}
+                        </li>
+                    </ul>
+                {% endfor %}
+
             {% endif %}
         </ul>
     {% endblock %}

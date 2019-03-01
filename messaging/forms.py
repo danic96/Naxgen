@@ -35,13 +35,9 @@ class MessageForm(ModelForm):
             self.fields['to'].queryset = User.objects.all().exclude(username=user)
 
     class Meta:
-        # to = forms.ChoiceField(choices=[(usr.id, usr.username) for usr in User.objects.all()[0:0]])
         model = Message
         fields = ['to', 'text']
         exclude = ('date', 'id', 'sender',)
-        # widgets = {
-        #    'to': Select(attrs={'class': 'select'}),
-        # }
 
 
 class GroupForm(ModelForm):

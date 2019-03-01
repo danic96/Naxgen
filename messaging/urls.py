@@ -29,4 +29,9 @@ urlpatterns = [
     url(r'^user/create/$',
         UserCreate.as_view(),
         name='user_create'),
+
+    # URL FOR CREATING A GROUP
+    url(r'^group/create/$',
+        GroupCreate.as_view(),
+        name='group_create'),
 ]
