@@ -23,4 +23,6 @@ urlpatterns = [
     url(r'^messaging/', include(('messaging.urls', 'messaging'), namespace='messaging')),
     url(r'^login/$', LoginView.as_view(), name='login'),
     url(r'^logout/$', LogoutView.as_view(), name='logout'),
+    # url(r'^accounts/', include('django_registration.backends.one_step.urls')),
+    # url(r'^accounts/', include('django.contrib.auth.urls')),
 ]
