@@ -19,6 +19,8 @@ class UserForm(ModelForm):
         user = User.objects.create_user(username=self.cleaned_data['username'],
                                         password=self.cleaned_data['password'],
                                         email=self.cleaned_data['email'],
+                                        first_name=self.cleaned_data['first_name'],
+                                        last_name=self.cleaned_data['last_name'],
                                         )
         return user
 
