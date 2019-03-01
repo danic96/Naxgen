@@ -58,3 +58,12 @@ class MessageDetail(DetailView):
     def get_context_data(self, **kwargs):
         context = super(MessageDetail, self).get_context_data(**kwargs)
         return context
+
+
+class GroupDetail(DetailView):
+    model = Group
+    template_name = 'messaging/group_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(GroupDetail, self).get_context_data(**kwargs)
+        return context

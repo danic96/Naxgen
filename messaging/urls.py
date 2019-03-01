@@ -21,7 +21,7 @@ urlpatterns = [
         name='message_create'),
 
     # URL FOR READING MESSAGE
-    url(r'^restaurants/(?P<pk>\d+)/$',
+    url(r'^message/(?P<pk>\d+)/$',
         MessageDetail.as_view(),
         name='message_detail'),
 
@@ -34,4 +34,9 @@ urlpatterns = [
     url(r'^group/create/$',
         GroupCreate.as_view(),
         name='group_create'),
+
+    # URL FOR VIEWING GROUP
+    url(r'^group/(?P<pk>\d+)/$',
+        GroupDetail.as_view(),
+        name='group_detail'),
 ]

@@ -1,0 +1,15 @@
+{% extends "messaging/base.html" %}
+{% block content %}
+
+    <h2>Name: {{ group.name }}</h2>
+<h2>Content:</h2>
+<p>
+    <ul>
+    {% for member in group.members.all %}
+        <li> {{ member.username }} </li>
+    {% endfor %}
+    </ul>
+    {{ message.text|linebreaks }}<br/>
+</p>
+
+{% endblock %}

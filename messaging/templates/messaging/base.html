@@ -36,7 +36,7 @@
                 {% for group in groups %}
                     <ul>
                         <li>
-                            {{ group.name }}
+                            <a href="{% url 'messaging:group_detail' group.id %}" > {{ group.name }} </a>
                         </li>
                     </ul>
                 {% endfor %}
