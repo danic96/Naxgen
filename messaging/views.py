@@ -31,3 +31,12 @@ class MessageCreate(CreateView):
     def form_valid(self, form):
         form.instance.sender = self.request.user
         return super(MessageCreate, self).form_valid(form)
+
+
+class MessageDetail(DetailView):
+    model = Message
+    template_name = 'messaging/message_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(MessageDetail, self).get_context_data(**kwargs)
+        return context

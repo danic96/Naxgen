@@ -29,6 +29,9 @@
     {% block sidebar %}
         <ul>
             <li><a href="/messaging/">Home</a></li>
+            {% if user.username %}
+                <h1>CHAT</h1>
+            {% endif %}
         </ul>
     {% endblock %}
 </div>

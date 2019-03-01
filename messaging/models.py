@@ -8,13 +8,6 @@ from django.urls import reverse
 
 # Create your models here.
 
-"""
-class Author(models.Model):
-    user = models.OneToOneField(User, null=True, blank=True, on_delete=models.PROTECT)
-    date = models.DateField(default=date.today)
-    friends = models.ManyToManyField("self", blank=True)
-"""
-
 
 class User(AbstractUser):
     date = models.DateField(default=date.today)

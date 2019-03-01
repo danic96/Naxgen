@@ -20,6 +20,11 @@ urlpatterns = [
         MessageCreate.as_view(),
         name='message_create'),
 
+    # URL FOR READING MESSAGE
+    url(r'^restaurants/(?P<pk>\d+)/$',
+        MessageDetail.as_view(),
+        name='message_detail'),
+
     # URL FOR CREATING USER
     url(r'^user/create/$',
         UserCreate.as_view(),

@@ -2,13 +2,13 @@
 {% block content %}
 <h1>
     Messages
-    {% if user.username %}(<a href="{% url 'messaging:message_create' %}">add</a>){% endif %}
+    {% if user.username %}(<a href="{% url 'messaging:message_create' %}">Send</a>){% endif %}
 </h1>
 <ul>
     {% for message in latest_message_list %}
         {% if user.username == message.to.username %}
-            <li><a href="">
-                {{ message.id }}</a>
+            <li><a href="{% url 'messaging:message_detail' message.id %}">
+                Message from {{ message.sender }}</a>
             </li>
         {% endif %}
     {% empty %}<li>Sorry, no messages registered yet.</li>
