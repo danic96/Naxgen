@@ -2,6 +2,8 @@ from django.forms import ModelForm, CharField, PasswordInput
 from messaging.models import *
 from .models import User
 from django.contrib.auth.models import UserManager
+from django.forms.widgets import *
+from django import forms
 
 
 class UserForm(ModelForm):
@@ -26,10 +28,20 @@ class UserForm(ModelForm):
 
 
 class MessageForm(ModelForm):
+    def __init__(self, request, *args, **kwargs):
+        super(MessageForm, self).__init__(**kwargs)
+        user = request.user
+        if user:
+            self.fields['to'].queryset = User.objects.all().exclude(username=user)
+
     class Meta:
+        # to = forms.ChoiceField(choices=[(usr.id, usr.username) for usr in User.objects.all()[0:0]])
         model = Message
         fields = ['to', 'text']
         exclude = ('date', 'id', 'sender',)
+        # widgets = {
+        #    'to': Select(attrs={'class': 'select'}),
+        # }
 
 
 class GroupForm(ModelForm):
