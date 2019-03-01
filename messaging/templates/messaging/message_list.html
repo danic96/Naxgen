@@ -8,7 +8,7 @@
     {% for message in latest_message_list %}
         {% if user.username == message.to.username %}
             <li><a href="{% url 'messaging:message_detail' message.id %}">
-                Message from {{ message.sender }}</a>
+                Message from {{ message.sender }} - {{ message.date }}</a>
             </li>
         {% endif %}
     {% empty %}<li>Sorry, no messages registered yet.</li>
