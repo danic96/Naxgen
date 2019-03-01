@@ -28,6 +28,7 @@ class UserForm(ModelForm):
 class MessageForm(ModelForm):
     class Meta:
         model = Message
+        fields = ['to', 'text']
         exclude = ('date', 'id', 'sender',)
 
 

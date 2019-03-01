@@ -1,8 +1,10 @@
 {% extends "messaging/base.html" %}
 {% block content %}
+
+    <h2>Date: {{ message.date }}</h2>
 <h2>Content:</h2>
 <p>
-    {{ message.text }}<br/>
+    {{ message.text|linebreaks }}<br/>
 </p>
 
 {% endblock %}
