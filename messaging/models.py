@@ -35,7 +35,7 @@ class Message(models.Model):
 class Group(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.TextField(default="")
-    members = models.ManyToManyField(User)
+    members = models.ManyToManyField(User, blank=True)
 
     def get_absolute_url(self):
         return reverse('messaging:message_list', kwargs={})
