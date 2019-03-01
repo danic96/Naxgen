@@ -28,8 +28,8 @@ class Message(models.Model):
     id = models.AutoField(primary_key=True)
     date = models.DateField(default=date.today)
     text = models.TextField()
-    sender = models.OneToOneField(User, on_delete=models.PROTECT, related_name='sender', default=None)
-    to = models.OneToOneField(User, on_delete=models.PROTECT, related_name='to', default=None)
+    sender = models.ForeignKey(User, on_delete=models.PROTECT, related_name='sender')
+    to = models.ForeignKey(User, on_delete=models.PROTECT, related_name='to')
 
     def get_absolute_url(self):
         return reverse('messaging:message_list', kwargs={})
