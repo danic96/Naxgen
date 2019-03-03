@@ -10,7 +10,7 @@ from messaging.views import *
 urlpatterns = [
     url(r'^$',
         ListView.as_view(
-            queryset=Message.objects.filter(date__lte=timezone.now()).order_by('-date')[:5],
+            queryset=Message.objects.filter(date__lte=timezone.now()).order_by('-date'),
             context_object_name='latest_message_list',
             template_name='messaging/message_list.html'),
         name='message_list'),
