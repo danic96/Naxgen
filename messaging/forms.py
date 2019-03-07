@@ -41,6 +41,21 @@ class MessageForm(ModelForm):
 
 
 class GroupForm(ModelForm):
+    def __init__(self, request, *args, **kwargs):
+        super(GroupForm, self).__init__(**kwargs)
+        self.user = User.objects.get(username=request.user)
+
     class Meta:
         model = Group
         exclude = ('id', 'messages',)
+
+    def save(self):
+        group = Group(name=self.cleaned_data['name'],)
+        group.save()
+        group.members.set(self.cleaned_data['members'])
+
+        self.user.groups.add(group)
+        self.user.save()
+
+        return group
+

@@ -45,6 +45,11 @@ class GroupCreate(CreateView):
     model = Group
     template_name = 'messaging/form.html'
     form_class = GroupForm
+
+    def get_form_kwargs(self):
+        kwargs = super(GroupCreate, self).get_form_kwargs()
+        kwargs.update({'request': self.request})
+        return kwargs
     
     def form_valid(self, form):
         form.instance.sender = self.request.user

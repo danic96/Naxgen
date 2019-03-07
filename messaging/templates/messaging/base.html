@@ -33,7 +33,7 @@
                 <h1>CHATS</h1>
                 <h3><a href="{% url 'messaging:group_create' %}" >Create chat</a></h3>
 
-                {% for group in groups %}
+                {% for group in user.groups.all %}
                     <ul>
                         <li>
                             <a href="{% url 'messaging:group_detail' group.id %}" > {{ group.name }} </a>
