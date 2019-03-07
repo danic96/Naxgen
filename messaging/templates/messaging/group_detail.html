@@ -15,7 +15,7 @@
 <h2>
     MESSAGES:
 </h2>
-    {% for message in group_messages %}
+    {% for message in group.messages.all %}
         {{ message.text }} <br>
     {% endfor %}
 

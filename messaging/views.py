@@ -75,5 +75,7 @@ def group_message_create(request, pk):
         group_id=group,
         text=request.POST['message'],)
     message.save()
+    group.messages.add(message)
+    group.save()
     return HttpResponseRedirect(reverse('messaging:group_detail',
                                 args=(group.id,)))
