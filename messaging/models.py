@@ -1,9 +1,6 @@
 from django.db import models
-# from django.contrib.auth.models import User
-from datetime import date
 
 from django.contrib.auth.models import AbstractUser
-from django.http import HttpResponseRedirect
 from django.urls import reverse
 
 from django.utils import timezone
@@ -21,8 +18,6 @@ class User(AbstractUser):
 
 class Message(models.Model):
     id = models.AutoField(primary_key=True)
-    # date = models.DateTimeField(default=date.ctime(date.today().strftime('%Y-%m-%d %H:%M:[%S[%f]][%z]')))
-    # date = models.DateTimeField(default=date.today())
     date = models.DateTimeField(default=timezone.now)
     text = models.TextField()
     sender = models.ForeignKey(User, on_delete=models.PROTECT, related_name='sender')
@@ -36,6 +31,7 @@ class Group(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.TextField(default="")
     members = models.ManyToManyField(User, blank=True)
+    messages = models.ManyToManyField('GroupMessage')
 
     def get_absolute_url(self):
         return reverse('messaging:message_list', kwargs={})

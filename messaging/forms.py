@@ -43,4 +43,4 @@ class MessageForm(ModelForm):
 class GroupForm(ModelForm):
     class Meta:
         model = Group
-        exclude = ('id',)
+        exclude = ('id', 'messages',)
