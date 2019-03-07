@@ -14,9 +14,12 @@
 
 <h2>
     MESSAGES:
-    {{ group }}
-
 </h2>
+    {% for message in group_messages %}
+        {{ message.text }}
+    {% endfor %}
+
+
 
 <h2>
     SEND MESSAGE:
