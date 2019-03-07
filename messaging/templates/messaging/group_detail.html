@@ -13,11 +13,17 @@
 </p>
 
 <h2>
+    MESSAGES:
+    {{ group }}
+
+</h2>
+
+<h2>
     SEND MESSAGE:
 </h2>
-    <form action="" method="post" >
+    <form action="{% url 'messaging:group_message_create' group.id %}" method="post" >
         {% csrf_token %}
-        Message: <textarea name="message" id="group_message" rows="4"></textarea>
+        Message: <textarea name="message" id="group_message" rows="4"></textarea><br>
         <input type="submit" value="Send" />
     </form>
 

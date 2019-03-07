@@ -10,5 +10,6 @@ from .models import User
 # admin.site.register(models.Author)
 admin.site.register(models.Group)
 admin.site.register(models.Message)
+admin.site.register(models.GroupMessage)
 
 admin.site.register(User, UserAdmin)

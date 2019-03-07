@@ -67,3 +67,13 @@ class GroupDetail(DetailView):
     def get_context_data(self, **kwargs):
         context = super(GroupDetail, self).get_context_data(**kwargs)
         return context
+
+
+def group_message_create(request, pk):
+    group = get_object_or_404(Group, pk=pk)
+    message = GroupMessage(
+        group_id=group,
+        text=request.POST['message'],)
+    message.save()
+    return HttpResponseRedirect(reverse('messaging:group_detail',
+                                args=(group.id,)))

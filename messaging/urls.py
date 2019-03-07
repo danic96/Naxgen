@@ -39,4 +39,9 @@ urlpatterns = [
     url(r'^group/(?P<pk>\d+)/$',
         GroupDetail.as_view(),
         name='group_detail'),
+
+    # Create a restaurant review, ex.: /myrestaurants/restaurants/1/reviews/create/
+    url(r'^group/(?P<pk>\d+)/message/create/$',
+        group_message_create,
+        name='group_message_create'),
 ]
