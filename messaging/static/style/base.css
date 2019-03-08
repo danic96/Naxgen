@@ -59,3 +59,9 @@ textarea, input[type=number], input[type=url]
     font-size: 75%;
     color: grey;
 }
+#wrapper
+{
+    width: 100%;
+    display: inline-block;
+    /*border: 2px dotted black;*/
+}
