@@ -34,8 +34,10 @@ textarea, input[type=number], input[type=url]
 #message_from
 {
     border: 2px solid grey;
+    text-align: left;
 }
 #message_own
 {
     border: 2px solid greenyellow;
+    text-align: right;
 }

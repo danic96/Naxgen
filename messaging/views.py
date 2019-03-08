@@ -79,7 +79,7 @@ def group_message_create(request, pk):
     message = GroupMessage(
         group_id=group,
         text=request.POST['message'],
-        from_user=request.user.username,)
+        from_user=request.user,)
     message.save()
     group.messages.add(message)
     group.save()

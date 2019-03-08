@@ -17,10 +17,12 @@
 </h2>
 <div id="messages">
     {% for message in group.messages.all %}
-        {% if user.username %}
-            {{ message.text }} <br>
+        {% if user.username == message.from_user.username %}
+            <div id="message_own"> {{ message.text }} </div><br>
         {% else %}
+            <div id="message_from"> {{ message.text }} </div><br>
         {% endif %}
+        {% empty %} <div>No messages on this chat yet</div>
     {% endfor %}
 </div>
 
