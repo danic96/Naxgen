@@ -18,9 +18,19 @@
 <div id="messages">
     {% for message in group.messages.all %}
         {% if user.username == message.from_user.username %}
-            <div id="message_own"> {{ message.text }} </div><br>
+            <div id="message_own" class="message">
+                {{ message.text }}
+                <div id="message_information">
+                    {{ message.date }}
+                </div>
+            </div><br>
         {% else %}
-            <div id="message_from"> {{ message.text }} </div><br>
+            <div id="message_from" class="message">
+                {{ message.text }} <br>
+                <div id="message_information">
+                    by {{ message.from_user }} - {{ message.date }}
+                </div>
+            </div><br>
         {% endif %}
         {% empty %} <div>No messages on this chat yet</div>
     {% endfor %}

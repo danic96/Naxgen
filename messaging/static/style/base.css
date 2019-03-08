@@ -27,17 +27,35 @@ textarea, input[type=number], input[type=url]
     width: 25em;
 }
 /* GRAPHICS FOR GROUP_MESSAGES */
+.message
+{
+    margin: 5px;
+    padding: 5px;
+    word-break: break-word;
+}
 #messages
 {
     border: 2px solid black;
+    padding: 10px;
+    display: inline-block;
+    max-width: 95%;
 }
 #message_from
 {
     border: 2px solid grey;
     text-align: left;
+    display: inline-block;
+    float: left;
 }
 #message_own
 {
     border: 2px solid greenyellow;
     text-align: right;
+    display: inline-block;
+    float: right;
+}
+#message_information
+{
+    font-size: 75%;
+    color: grey;
 }
