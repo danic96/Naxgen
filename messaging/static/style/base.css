@@ -26,3 +26,16 @@ textarea, input[type=number], input[type=url]
     height: 1.25em;
     width: 25em;
 }
+/* GRAPHICS FOR GROUP_MESSAGES */
+#messages
+{
+    border: 2px solid black;
+}
+#message_from
+{
+    border: 2px solid grey;
+}
+#message_own
+{
+    border: 2px solid greenyellow;
+}

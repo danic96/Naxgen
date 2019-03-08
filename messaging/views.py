@@ -78,7 +78,8 @@ def group_message_create(request, pk):
     group = get_object_or_404(Group, pk=pk)
     message = GroupMessage(
         group_id=group,
-        text=request.POST['message'],)
+        text=request.POST['message'],
+        from_user=request.user.username,)
     message.save()
     group.messages.add(message)
     group.save()

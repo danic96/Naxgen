@@ -15,10 +15,14 @@
 <h2>
     MESSAGES:
 </h2>
+<div id="messages">
     {% for message in group.messages.all %}
-        {{ message.text }} <br>
+        {% if user.username %}
+            {{ message.text }} <br>
+        {% else %}
+        {% endif %}
     {% endfor %}
-
+</div>
 
 
 <h2>

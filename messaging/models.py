@@ -43,3 +43,4 @@ class GroupMessage(models.Model):
     group_id = models.ForeignKey(Group, on_delete=models.PROTECT)
     text = models.TextField()
     date = models.DateTimeField(default=timezone.now)
+    from_user = models.ForeignKey(User, on_delete=models.PROTECT)
