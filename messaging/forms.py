@@ -54,6 +54,10 @@ class GroupForm(ModelForm):
         group.save()
         group.members.set(self.cleaned_data['members'])
 
+        for member in self.cleaned_data['members']:
+            member.groups.add(group)
+            member.save()
+
         self.user.groups.add(group)
         self.user.save()
 
