@@ -46,6 +46,15 @@
     {% endblock %}
 </div>
 
+<div id="sidebar2">
+    {% block sidebar2 %}
+        <h2>Other People</h2>
+            {% for user in users %}
+                { user.username }}
+            {% endfor %}
+    {% endblock %}
+</div>
+
 <div id="content">
     {% block content %}
         {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
@@ -56,14 +65,6 @@
     {% block footer %}{% endblock %}
 </div>
 
-<div id="sidebar2">
-    {% block sidebar2 %}
-        <h2>Other People</h2>
-            {% for user in users %}
-                { user.username }}
-            {% endfor %}
-    {% endblock %}
-</div>
 
 </body>
 </html>
