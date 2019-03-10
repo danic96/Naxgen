@@ -15,6 +15,13 @@
     float: left;
     width: 190px;
 }
+
+#sidebar2
+{
+    float: right;
+    width: 190px;
+}
+
 #footer
 {
     margin: 0;

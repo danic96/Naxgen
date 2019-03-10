@@ -3,9 +3,13 @@ from django.contrib.auth.decorators import login_required
 
 from django.utils import timezone
 from django.views.generic import DetailView, ListView, UpdateView
+
+from messaging import views
 from messaging.models import *
 from messaging.forms import *
 from messaging.views import *
+from . import  views
+
 
 urlpatterns = [
     url(r'^$',
@@ -40,7 +44,12 @@ urlpatterns = [
         GroupDetail.as_view(),
         name='group_detail'),
 
-    # Create a restaurant review, ex.: /myrestaurants/restaurants/1/reviews/create/
+    # URL FOR ADDING OR DELETING USERS
+    url(r'^connect/(?P<operation>.+)/(?P<pk>\d+)/$',
+        views.change_friend,
+        name='change_friend'),
+
+    # Create a restaurant  review, ex.: /myrestaurants/restaurants/1/reviews/create/
     url(r'^group/(?P<pk>\d+)/message/create/$',
         group_message_create,
         name='group_message_create'),

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.urls import reverse
 from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 from django.utils.decorators import method_decorator
 from django.views.generic import DetailView
 from django.views.generic.edit import CreateView
@@ -9,6 +9,7 @@ from messaging.models import *
 from django.contrib.auth.decorators import login_required
 
 from messaging.forms import *
+from messaging.models import *
 
 from django.http import HttpResponseRedirect
 
@@ -59,6 +60,7 @@ class GroupCreate(CreateView):
 class MessageDetail(DetailView):
     model = Message
     template_name = 'messaging/message_detail.html'
+    users = User.objects.all()
 
     def get_context_data(self, **kwargs):
         context = super(MessageDetail, self).get_context_data(**kwargs)
@@ -68,6 +70,7 @@ class MessageDetail(DetailView):
 class GroupDetail(DetailView):
     model = Group
     template_name = 'messaging/group_detail.html'
+    users = User.objects.all()
 
     def get_context_data(self, **kwargs):
         context = super(GroupDetail, self).get_context_data(**kwargs)
@@ -85,3 +88,12 @@ def group_message_create(request, pk):
     group.save()
     return HttpResponseRedirect(reverse('messaging:group_detail',
                                 args=(group.id,)))
+
+
+def change_friend(request, operation, pk):
+    friend = User.objects.get(pk=pk)
+    if operation == 'add':
+        Friend.make_friend(request.user, friend)
+    elif operation == 'remove':
+        Friend.remove_friend(request.user, friend)
+    return redirect('messaging:message_list')
