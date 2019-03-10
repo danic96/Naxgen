@@ -60,7 +60,6 @@ class GroupCreate(CreateView):
 class MessageDetail(DetailView):
     model = Message
     template_name = 'messaging/message_detail.html'
-    users = User.objects.all()
 
     def get_context_data(self, **kwargs):
         context = super(MessageDetail, self).get_context_data(**kwargs)
@@ -70,7 +69,6 @@ class MessageDetail(DetailView):
 class GroupDetail(DetailView):
     model = Group
     template_name = 'messaging/group_detail.html'
-    users = User.objects.all()
 
     def get_context_data(self, **kwargs):
         context = super(GroupDetail, self).get_context_data(**kwargs)
