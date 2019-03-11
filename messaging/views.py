@@ -88,6 +88,12 @@ class GroupUpdate(UpdateView):
     fields = ['members']
     template_name = 'messaging/form.html'
 
+    def form_valid(self, form):
+        form.instance.sender = self.request.user
+        for user in form.cleaned_data['members']:
+            print(user)
+        return super(GroupUpdate, self).form_valid(form)
+
 
 def change_friend(request, operation, pk):
     friend = User.objects.get(pk=pk)
