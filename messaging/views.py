@@ -2,16 +2,11 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect
-from django.utils.decorators import method_decorator
 from django.views.generic import DetailView
 from django.views.generic.edit import CreateView
-from messaging.models import *
-from django.contrib.auth.decorators import login_required
 
 from messaging.forms import *
 from messaging.models import *
-
-from django.http import HttpResponseRedirect
 
 # Create your views here.
 
@@ -95,6 +90,16 @@ def group_users_add(request, pk):
                'group': Group.objects.get(pk=pk)}
 
     return render(request, template, context)
+
+
+def group_users_submit(request, pk):
+    group = get_object_or_404(Group, pk=pk)
+    users = request.POST['users']
+
+    print(users)
+
+    return HttpResponseRedirect(reverse('messaging:group_detail',
+                                        args=(group.id,)))
 
 
 def change_friend(request, operation, pk):

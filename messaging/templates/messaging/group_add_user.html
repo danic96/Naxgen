@@ -3,13 +3,13 @@
 
     {{ group.name }}<br><br>
 
-    <form action="" method="post" >
+    <form action="{% url 'messaging:group_users_submit' group.id %}" method="post" >
         {% csrf_token %}
-        <select multiple>
+        <select name="users" multiple>
             {% for user in  group_users %}
                 <option>{{ user }}</option>
             {% endfor %}
-        </select>
+        </select><br>
         <input type="submit" value="Send" />
     </form>
 
