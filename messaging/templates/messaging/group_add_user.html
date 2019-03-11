@@ -1,0 +1,16 @@
+{% extends "messaging/base.html" %}
+{% block content %}
+
+    {{ group.name }}<br><br>
+
+    <form action="" method="post" >
+        {% csrf_token %}
+        <select multiple>
+            {% for user in  group_users %}
+                <option>{{ user }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Send" />
+    </form>
+
+{% endblock %}

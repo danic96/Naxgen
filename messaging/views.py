@@ -88,6 +88,15 @@ def group_message_create(request, pk):
                                 args=(group.id,)))
 
 
+def group_users_add(request, pk):
+    template = 'messaging/group_add_user.html'
+
+    context = {'group_users': User.objects.all(),
+               'group': Group.objects.get(pk=pk)}
+
+    return render(request, template, context)
+
+
 def change_friend(request, operation, pk):
     friend = User.objects.get(pk=pk)
     if operation == 'add':

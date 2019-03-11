@@ -9,7 +9,9 @@
         <li> {{ member.username }} </li>
     {% endfor %}
     </ul>
-    {{ message.text|linebreaks }}<br/>
+
+    <h2><a href="{% url 'messaging:group_users_add' group.id %}">ADD USER</a> </h2>
+
 </p>
 
 <h2>

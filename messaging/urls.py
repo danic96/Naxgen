@@ -53,4 +53,9 @@ urlpatterns = [
     url(r'^group/(?P<pk>\d+)/message/create/$',
         group_message_create,
         name='group_message_create'),
+
+    # Add user/s to group
+    url(r'^group/(?P<pk>\d+)/addusers',
+        group_users_add,
+        name='group_users_add'),
 ]
