@@ -3,7 +3,7 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect
 from django.views.generic import DetailView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 
 from messaging.forms import *
 from messaging.models import *
@@ -83,23 +83,10 @@ def group_message_create(request, pk):
                                 args=(group.id,)))
 
 
-def group_users_add(request, pk):
-    template = 'messaging/group_add_user.html'
-
-    context = {'group_users': User.objects.all(),
-               'group': Group.objects.get(pk=pk)}
-
-    return render(request, template, context)
-
-
-def group_users_submit(request, pk):
-    group = get_object_or_404(Group, pk=pk)
-    users = request.POST['users']
-
-    print(users)
-
-    return HttpResponseRedirect(reverse('messaging:group_detail',
-                                        args=(group.id,)))
+class GroupUpdate(UpdateView):
+    model = Group
+    fields = ['members']
+    template_name = 'messaging/form.html'
 
 
 def change_friend(request, operation, pk):

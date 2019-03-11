@@ -54,13 +54,8 @@ urlpatterns = [
         group_message_create,
         name='group_message_create'),
 
-    # Add user/s to group
-    url(r'^group/(?P<pk>\d+)/addusers',
-        group_users_add,
-        name='group_users_add'),
-
-    # Submit request to add users
-    url(r'^group/(?P<pk>\d+)/addusers/submit',
-        group_users_submit,
-        name='group_users_submit'),
+    # Add user/s to group alternative
+    url(r'^group/(?P<pk>\d+)/edit',
+        GroupUpdate.as_view(),
+        name='group_users_edit'),
 ]
