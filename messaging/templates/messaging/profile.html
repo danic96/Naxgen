@@ -4,7 +4,11 @@
 <title>Profile</title>
 
 <div class="container">
-    <h1>Profile</h1>
+    {% if user.username == request.user.username %}
+        <h1>Your profile</h1>
+    {% else %}
+        <h1>{{ user.username }}'s profile</h1>
+    {% endif %}
     <p>Username: {{ user }}</p>
     <p>First name: {{ user.first_name }}</p>
     <p>Last name: {{ user.last_name }}</p>
