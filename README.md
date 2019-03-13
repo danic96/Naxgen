@@ -11,5 +11,3 @@ Avaible users are:
     - vikton
 
 All default passwords are: 12341234
-
-And
