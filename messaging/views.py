@@ -91,7 +91,13 @@ class GroupUpdate(UpdateView):
     def form_valid(self, form):
         form.instance.sender = self.request.user
         for user in form.cleaned_data['members']:
-            print(user)
+            if self.object not in user.groups.all():
+                user.groups.add(self.object)
+
+        #TEMPORAL FIX
+        for user in User.objects.filter(group=self.object):
+            if user not in form.cleaned_data['members']:
+                user.groups.remove(self.object)
         return super(GroupUpdate, self).form_valid(form)
 
 
