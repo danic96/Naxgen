@@ -1,4 +1,8 @@
 {% extends "messaging/base.html" %}
+{% block title %}
+    - Message
+{% endblock %}
+
 {% block content %}
 
     <h2>Date: {{ message.date|date:'Y-m-d H:i' }}</h2>
