@@ -64,6 +64,11 @@ urlpatterns = [
         group_message_create,
         name='group_message_create'),
 
+    # URL for searching
+    url(r'^search_engine/$',
+        views.search_engine,
+        name='search'),
+
     # Add user/s to group alternative
     url(r'^group/(?P<pk>\d+)/edit',
         GroupUpdate.as_view(),

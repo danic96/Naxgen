@@ -54,7 +54,7 @@
             <h2>Your friends:</h2>
                 {% for friend in request.user.friends.all %}
                     <li type="circle">
-                        <a href="{% url 'messaging:view_profile_with_pk' pk=friend.pk %} "
+                        <a href="{% url 'messaging:view_profile_with_pk' pk=friend.pk %} " >
                             <h5>{{ friend.username }}</h5>
                         </a>
                         <a href="{% url 'messaging:change_friend' operation='remove' pk=friend.pk %}" >

@@ -3,11 +3,9 @@
     - Home
 {% endblock %}
 {% block content %}
-    <form class="search"  method='post'>
-        {% csrf_token %}
-        <input type="search" placeholder="Search users here..." name="usr_query"
-        value='{{ query }}' required>
-            <button type="submit">Search</button>
+    <form action="/" method="post">
+        <input type="text" placeholder="Search users here..." name="term" size="30">
+        <button type="submit">Search</button>
     </form>
 <h1>
     Messages

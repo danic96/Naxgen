@@ -1,5 +1,5 @@
 from django.http import HttpResponseRedirect, HttpResponse
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, redirect, render_to_response
 from django.template import loader, Context
 from django.views.generic import DetailView
 from django.shortcuts import render
@@ -119,10 +119,7 @@ def view_profile(request, pk=None):
     args = {'user': user}
     return render(request, 'messaging/profile.html', args)
 
-def search(request):
-  query = request.POST['usr_query']
-  # print "QUERY: "
-  # print query
-  t = loader.get_template('gtr_site/test_search_results.html')
-  c = Context({ 'query': query,})
-  return HttpResponse(t.render(c))
+
+def search_engine(request):
+    if 1:
+        hah = 1
