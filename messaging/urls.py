@@ -49,8 +49,12 @@ urlpatterns = [
         views.change_friend,
         name='change_friend'),
 
-    # Create a restaurant  review, ex.: /myrestaurants/restaurants/1/reviews/create/
+    # Create a group message
     url(r'^group/(?P<pk>\d+)/message/create/$',
         group_message_create,
         name='group_message_create'),
+    # Add user/s to group alternative
+    url(r'^group/(?P<pk>\d+)/edit',
+        GroupUpdate.as_view(),
+        name='group_users_edit'),
 ]

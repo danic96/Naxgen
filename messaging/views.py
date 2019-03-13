@@ -3,18 +3,16 @@ from django.views.generic import TemplateView
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect
-from django.utils.decorators import method_decorator
 from django.views.generic import DetailView
 from django.views.generic.edit import CreateView
 from pip._vendor.requests import Response
 
 from messaging.models import *
 from django.contrib.auth.decorators import login_required
+from django.views.generic.edit import CreateView, UpdateView
 
 from messaging.forms import *
 from messaging.models import *
-
-from django.http import HttpResponseRedirect
 
 # Create your views here.
 
@@ -88,6 +86,24 @@ def group_message_create(request, pk):
     group.save()
     return HttpResponseRedirect(reverse('messaging:group_detail',
                                 args=(group.id,)))
+
+
+class GroupUpdate(UpdateView):
+    model = Group
+    fields = ['members']
+    template_name = 'messaging/form.html'
+
+    def form_valid(self, form):
+        form.instance.sender = self.request.user
+        for user in form.cleaned_data['members']:
+            if self.object not in user.groups.all():
+                user.groups.add(self.object)
+
+        #TEMPORAL FIX
+        for user in User.objects.filter(group=self.object):
+            if user not in form.cleaned_data['members']:
+                user.groups.remove(self.object)
+        return super(GroupUpdate, self).form_valid(form)
 
 
 def change_friend(request, operation, pk):

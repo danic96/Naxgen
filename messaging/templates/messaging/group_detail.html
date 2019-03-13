@@ -9,7 +9,9 @@
         <li> {{ member.username }} </li>
     {% endfor %}
     </ul>
-    {{ message.text|linebreaks }}<br/>
+
+    <h2><a href="{% url 'messaging:group_users_edit' group.id %}">ADD USER</a> </h2>
+
 </p>
 
 <h2>
@@ -33,8 +35,8 @@
                     </div>
                 </div><br>
             {% endif %}
-    {% empty %} <div>No messages on this chat yet</div>
         </div>
+    {% empty %} <div>No messages on this chat yet</div>
     {% endfor %}
 </div>
 
