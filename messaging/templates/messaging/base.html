@@ -28,9 +28,9 @@
 <div id="sidebar">
     {% block sidebar %}
         <ul>
-            <h3> <a href="{% url 'messaging:view_profile' %}">Your Profile</a></h3>
             <h1><li><a href="/messaging/">Home</a></li></h1>
             {% if user.username %}
+                <h3> <a href="{% url 'messaging:view_profile' %}">Your Profile</a></h3>
                 <h1>CHATS</h1>
                 <h3><a href="{% url 'messaging:group_create' %}" >Create chat</a></h3>
 
@@ -44,6 +44,7 @@
 
             {% endif %}
         </ul>
+
     {% endblock %}
 </div>
 
