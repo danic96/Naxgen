@@ -12,9 +12,10 @@ admin.site.register(models.Group)
 admin.site.register(models.Message)
 admin.site.register(models.GroupMessage)
 
-admin.site.register(User, UserAdmin)
-
 
 class UserAdmin(admin.ModelAdmin):
     model = User
     filter_horizontal = ('user_permissions', 'groups',)
+
+
+admin.site.register(User, UserAdmin)
