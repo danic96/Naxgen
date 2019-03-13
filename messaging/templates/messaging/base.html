@@ -49,8 +49,8 @@
 <div id="sidebar2">
     {% block sidebar2 %}
         <h2>Other People</h2>
-            {% for user in users %}
-                { user.username }}
+            {% for friends in user.friends.all %}
+                {{ friends.username }}
             {% endfor %}
     {% endblock %}
 </div>
