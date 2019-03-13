@@ -28,6 +28,9 @@
 <div id="sidebar">
     {% block sidebar %}
         <ul>
+            <h3> <a href="{% url 'messaging:view_profile' %}">Your Profile</a></h3>
+        </ul>
+        <ul>
             <h1><li><a href="/messaging/">Home</a></li></h1>
             {% if user.username %}
                 <h1>CHATS</h1>
@@ -48,9 +51,12 @@
 
 <div id="sidebar2">
     {% block sidebar2 %}
-        <h2>Other People</h2>
+        <h2>Friends:</h2>
             {% for friends in user.friends.all %}
-                {{ friends.username }}
+                <a href="{% url 'messaging:view_profile_with_pk' pk=friends.pk %} "
+                    <h5>{{ friends.username }}</h5>
+                </a>
+                <button type="button" class="btn btn-default">Remove Friend</button>
             {% endfor %}
     {% endblock %}
 </div>

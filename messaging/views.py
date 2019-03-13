@@ -1,6 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect
 from django.views.generic import DetailView
+from django.shortcuts import render
 
 from django.views.generic.edit import CreateView, UpdateView
 
@@ -107,3 +108,12 @@ def change_friend(request, operation, pk):
     elif operation == 'remove':
         Friend.remove_friend(request.user, friend)
     return redirect('messaging:message_list')
+
+
+def view_profile(request, pk=None):
+    if pk:
+        user = User.objects.get(pk=pk)
+    else:
+        user = request.user
+    args = {'user': user}
+    return render(request, 'messaging/profile.html', args)

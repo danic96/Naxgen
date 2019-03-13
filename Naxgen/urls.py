@@ -18,6 +18,8 @@ from django.urls import path, include
 from django.conf.urls import url
 from django.contrib.auth.views import LoginView, LogoutView
 
+from messaging import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^messaging/', include(('messaging.urls', 'messaging'), namespace='messaging')),

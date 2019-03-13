@@ -1,0 +1,19 @@
+{% extends "messaging/base.html" %}
+
+{% block content %}
+<title>Profile</title>
+
+<div class="container">
+    <h1>Profile</h1>
+    <p>Username: {{ user }}</p>
+    <p>First name: {{ user.first_name }}</p>
+    <p>Last name: {{ user.last_name }}</p>
+    <p>Email: {{ user.email }}</p>
+    <p>Description: {{ user.description }}</p>
+    <p>Phone: {{ user.phone }}</p>
+    <p>City: {{ user.city }}</p>
+    <p>Website: {{ user.website }}</p>
+    <img src="{{ '/' }}" width="240">
+</div>
+
+{% endblock %}
