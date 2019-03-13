@@ -1,20 +1,14 @@
-from django.shortcuts import render
-from django.views.generic import TemplateView
-from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect
 from django.views.generic import DetailView
-from django.views.generic.edit import CreateView
-from pip._vendor.requests import Response
 
-from messaging.models import *
-from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import CreateView, UpdateView
 
 from messaging.forms import *
 from messaging.models import *
 
 # Create your views here.
+
 
 class UserCreate(CreateView):
     model = User
@@ -113,7 +107,3 @@ def change_friend(request, operation, pk):
     elif operation == 'remove':
         Friend.remove_friend(request.user, friend)
     return redirect('messaging:message_list')
-
-def Show_users():
-    users = User.objects.all()
-    return Response(users.values_list('username', flat=True))
