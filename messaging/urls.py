@@ -49,7 +49,7 @@ urlpatterns = [
         views.change_friend,
         name='change_friend'),
 
-    # URL FOR VIEWING THE PROFILE
+    # URL FOR VIEWING YOUR PROFILE
     url(r'^profile/$',
         views.view_profile,
         name='view_profile'),
