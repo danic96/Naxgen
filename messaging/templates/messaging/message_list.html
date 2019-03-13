@@ -3,6 +3,12 @@
     - Home
 {% endblock %}
 {% block content %}
+    <form class="search"  method='post'>
+        {% csrf_token %}
+        <input type="search" placeholder="Search users here..." name="usr_query"
+        value='{{ query }}' required>
+            <button type="submit">Search</button>
+    </form>
 <h1>
     Messages
     {% if user.username %}(<a href="{% url 'messaging:message_create' %}">Send</a>){% endif %}
