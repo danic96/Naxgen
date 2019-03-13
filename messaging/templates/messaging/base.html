@@ -52,14 +52,16 @@
     {% block sidebar2 %}
         {% if user.username %}
             <h2>Your friends:</h2>
-                {% for friend in request.user.friends.all %}
-                    <a href="{% url 'messaging:view_profile_with_pk' pk=friend.pk %} "
-                        <h5>{{ friend.username }}</h5>
-                    </a>
-                    <a href="{% url 'messaging:change_friend' operation='remove' pk=friend.pk %}">
-                        <button type="button" class="btn btn-default">Remove Friend</button>
-                    </a>
-                {% endfor %}
+                <li type="circle">
+                    {% for friend in request.user.friends.all %}
+                        <a href="{% url 'messaging:view_profile_with_pk' pk=friend.pk %} "
+                            <h5>{{ friend.username }}</h5>
+                        </a>
+                        <a href="{% url 'messaging:change_friend' operation='remove' pk=friend.pk %}">
+                            <button type="button" class="btn btn-default">Remove Friend</button>
+                        </a>
+                    {% endfor %}
+                </li>
         {% endif %}
     {% endblock %}
 </div>
