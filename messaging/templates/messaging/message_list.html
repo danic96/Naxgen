@@ -1,8 +1,12 @@
 {% extends "messaging/base.html" %}
 {% block title %}
-    el titol
+    - Home
 {% endblock %}
 {% block content %}
+    <form action="/" method="post">
+        <input type="text" placeholder="Search users here..." name="term" size="30">
+        <button type="submit">Search</button>
+    </form>
 <h1>
     Messages
     {% if user.username %}(<a href="{% url 'messaging:message_create' %}">Send</a>){% endif %}

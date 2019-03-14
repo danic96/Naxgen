@@ -56,6 +56,7 @@ class Friend(models.Model):
             current_user=current_user
         )
         friend.users.add(new_friend)
+        current_user.friends.add(new_friend)
 
     @classmethod
     def remove_friend(cls, current_user, existing_friend):
@@ -63,3 +64,4 @@ class Friend(models.Model):
             current_user=current_user
         )
         friend.users.remove(existing_friend)
+        current_user.friends.remove(existing_friend)

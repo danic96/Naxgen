@@ -14,7 +14,7 @@
 <div id="header">
     {% block header %}
         {% if user.username %}
-            <p>User: {{ user.username }} | <a href="{% url 'logout' %}?next={{request.path}}">logout</a></p>
+            <p>User: {{ request.user.username }} | <a href="{% url 'logout' %}?next={{request.path}}">logout</a></p>
         {% else %}
             <p>
                 <a href="{% url 'login' %}?next={{request.path}}">Login</a>
@@ -31,7 +31,7 @@
             <h1><li><a href="/messaging/">Home</a></li></h1>
             {% if user.username %}
                 <h3> <a href="{% url 'messaging:view_profile' %}">Your Profile</a></h3>
-                <h1>CHATS</h1>
+                <h1><li>Chats</li></h1>
                 <h3><a href="{% url 'messaging:group_create' %}" >Create chat</a></h3>
 
                 {% for group in user.groups.all %}
@@ -50,13 +50,19 @@
 
 <div id="sidebar2">
     {% block sidebar2 %}
-        <h2>Friends:</h2>
-            {% for friends in user.friends.all %}
-                <a href="{% url 'messaging:view_profile_with_pk' pk=friends.pk %} "
-                    <h5>{{ friends.username }}</h5>
-                </a>
-                <button type="button" class="btn btn-default">Remove Friend</button>
-            {% endfor %}
+        {% if user.username %}
+            <h2>Your friends:</h2>
+                {% for friend in request.user.friends.all %}
+                    <li type="circle">
+                        <a href="{% url 'messaging:view_profile_with_pk' pk=friend.pk %} " >
+                            <h5>{{ friend.username }}</h5>
+                        </a>
+                        <a href="{% url 'messaging:change_friend' operation='remove' pk=friend.pk %}" >
+                            <button type="button" class="btn btn-default">Remove</button>
+                        </a>
+                    </li>
+                {% endfor %}
+        {% endif %}
     {% endblock %}
 </div>
 

@@ -49,7 +49,7 @@ urlpatterns = [
         views.change_friend,
         name='change_friend'),
 
-    # URL FOR VIEWING THE PROFILE
+    # URL FOR VIEWING YOUR PROFILE
     url(r'^profile/$',
         views.view_profile,
         name='view_profile'),
@@ -63,6 +63,11 @@ urlpatterns = [
     url(r'^group/(?P<pk>\d+)/message/create/$',
         group_message_create,
         name='group_message_create'),
+
+    # URL for searching
+    url(r'^search_engine/$',
+        views.search_engine,
+        name='search'),
 
     # Add user/s to group alternative
     url(r'^group/(?P<pk>\d+)/edit',
