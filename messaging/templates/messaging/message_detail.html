@@ -7,4 +7,10 @@
     {{ message.text|linebreaks }}<br/>
 </p>
 
+    <form action="{% url 'messaging:message_reply' %}" method="post" >
+        {% csrf_token %}
+        Message: <textarea name="message" id="message_reply" rows="4"></textarea><br>
+        <input type="submit" value="Reply" />
+    </form>
+
 {% endblock %}
