@@ -102,6 +102,15 @@ class GroupUpdate(UpdateView):
         return super(GroupUpdate, self).form_valid(form)
 
 
+def send_reply(request, pk):
+    message = Message.objects.get(pk=pk)
+
+    info = request.POST
+
+    # return redirect('messaging:message_detail', pk)
+    return HttpResponseRedirect(reverse('messaging:message_detail',
+                                        args=(pk,)))
+
 def change_friend(request, operation, pk):
     friend = User.objects.get(pk=pk)
     if operation == 'add':

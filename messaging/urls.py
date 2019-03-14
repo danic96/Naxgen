@@ -49,6 +49,12 @@ urlpatterns = [
         views.change_friend,
         name='change_friend'),
 
+    # URL FOR SENDING REPLY TO MESSAGE
+    url(r'^message/(?P<pk>\d+)/$',
+        send_reply,
+        name='message_reply'),
+
+
     # URL FOR VIEWING YOUR PROFILE
     url(r'^profile/$',
         views.view_profile,
