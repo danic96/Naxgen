@@ -33,7 +33,7 @@
 
 <div id="left-sidebar">
     {% block sidebar %}
-            <h1><a href="/messaging/">Home</a></h1>
+            <h2><a href="/messaging/">Home</a></h2>
             {% if user.username %}
                 <h3> <a href="{% url 'messaging:view_profile' %}">Your Profile</a></h3>
                 <h1><li>Chats</li></h1>
