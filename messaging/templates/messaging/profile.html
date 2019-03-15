@@ -12,7 +12,7 @@
         <h1>Your profile</h1>
     {% else %}
         <h1>{{ user.username }}'s profile</h1>
-        {% if user in friends %}
+        {% if user in friend %}
             <a href="{% url 'messaging:change_friend' operation='remove' pk=user.pk %}" >
                 <button type="button" class="btn btn-default">REMOVE FRIEND</button>
             </a>
