@@ -9,7 +9,7 @@
     </form>
 <h1>
     Messages
-    {% if user.username %}(<a href="{% url 'messaging:message_create' %}">Send</a>){% endif %}
+    {% if user.username %}(<a href="{% url 'messaging:message_create' %}">Write new</a>){% endif %}
 </h1>
 <ul>
     {% for message in latest_message_list %}
