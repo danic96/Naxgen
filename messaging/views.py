@@ -133,6 +133,8 @@ def view_profile(request, pk=None):
     return render(request, 'messaging/profile.html', args)
 
 
-def search_engine(request):
-    if 1:
-        hah = 1
+def search(request):
+    if request.POST:
+        results = User.objects.filter(username=request.POST.get('search', False))
+        dic = {'results': results}
+        return render(request=request, template_name="messaging/search_users.html", context=dic)

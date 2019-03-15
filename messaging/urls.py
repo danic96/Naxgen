@@ -70,8 +70,8 @@ urlpatterns = [
         name='group_message_create'),
 
     # URL for searching
-    url(r'^search_engine/$',
-        views.search_engine,
+    url(r'^search/$',
+        views.search,
         name='search'),
 
     # Add user/s to group alternative

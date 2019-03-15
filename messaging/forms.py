@@ -11,7 +11,7 @@ class UserForm(ModelForm):
 
     class Meta:
         model = User
-        fields = ['username', 'first_name', 'last_name', 'email', 'password']
+        fields = ['username', 'first_name', 'last_name', 'email', 'password', 'description', 'city', 'phone', 'website']
         exclude = ('date',
                    'groups', 'user_permissions', 'last_login', 'is_superuser',
                    'is_staff', 'friends', 'is_active', 'date_joined'
@@ -23,6 +23,10 @@ class UserForm(ModelForm):
                                         email=self.cleaned_data['email'],
                                         first_name=self.cleaned_data['first_name'],
                                         last_name=self.cleaned_data['last_name'],
+                                        description=self.cleaned_data['description'],
+                                        phone=self.cleaned_data['phone'],
+                                        city=self.cleaned_data['city'],
+                                        website=self.cleaned_data['website']
                                         )
         return user
 

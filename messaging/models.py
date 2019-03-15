@@ -12,6 +12,10 @@ class User(AbstractUser):
     date = models.DateTimeField(default=timezone.now)
     friends = models.ManyToManyField("self", blank=True)
     groups = models.ManyToManyField('Group')
+    description = models.TextField(default='')
+    phone = models.TextField(default='')
+    city = models.TextField(default='')
+    website = models.TextField(default='')
 
     def get_absolute_url(self):
         return reverse('messaging:message_list', kwargs={})
