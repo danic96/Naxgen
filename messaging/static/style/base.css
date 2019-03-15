@@ -24,7 +24,7 @@
 {
     float: right;
     width: 190px;
-    padding-right: 10px;
+    padding-right: 15px;
 }
 
 #footer
@@ -33,6 +33,7 @@
     padding: 10px;
     text-align: center;
     float: bottom;
+    width: 100%;
 }
 textarea, input[type=number], input[type=url]
 {
@@ -78,7 +79,7 @@ textarea, input[type=number], input[type=url]
 {
     width: 100%;
     display: inline-block;
-    margin: 5px;
+    /*margin: 5px;*/
     /*border: 2px dotted black;*/
 }
 
