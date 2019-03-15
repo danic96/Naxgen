@@ -71,19 +71,6 @@ class GroupDetail(DetailView):
         return context
 
 
-def group_message_create(request, pk):
-    group = get_object_or_404(Group, pk=pk)
-    message = GroupMessage(
-        group_id=group,
-        text=request.POST['message'],
-        from_user=request.user,)
-    message.save()
-    group.messages.add(message)
-    group.save()
-    return HttpResponseRedirect(reverse('messaging:group_detail',
-                                args=(group.id,)))
-
-
 class GroupUpdate(UpdateView):
     model = Group
     fields = ['members']
@@ -102,10 +89,27 @@ class GroupUpdate(UpdateView):
         return super(GroupUpdate, self).form_valid(form)
 
 
+def group_message_create(request, pk):
+    group = get_object_or_404(Group, pk=pk)
+    message = GroupMessage(
+        group_id=group,
+        text=request.POST['message'],
+        from_user=request.user,)
+    message.save()
+    group.messages.add(message)
+    group.save()
+    return HttpResponseRedirect(reverse('messaging:group_detail',
+                                args=(group.id,)))
+
+
 def send_reply(request, pk):
     message = Message.objects.get(pk=pk)
 
-    info = request.POST
+    text = request.POST['message']
+    to = message.sender
+    sender = request.user
+    new_message = Message(sender=sender, to=to, text=text)
+    new_message.save()
 
     # return redirect('messaging:message_detail', pk)
     return HttpResponseRedirect(reverse('messaging:message_detail',
