@@ -1,0 +1,20 @@
+{% extends "messaging/base.html" %}
+
+{% block title %}
+    - Search Results
+{% endblock %}
+
+{% block content %}
+<title>Search Results</title>
+
+<div class="container">
+    <ul>
+        <h4>{{ search }}</h4>
+        <h4>{{ results }}</h4>
+        {% for x in results %}
+            <h4>{{ x }}</h4>
+            {% empty %} <h4>Sorry, there isn't any user with that name</h4>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
