@@ -23,15 +23,23 @@
 {
     float: right;
     width: 190px;
+    height: 100%;
     padding-right: 10px;
+}
+
+#wrapp_this {
+
 }
 
 #footer
 {
-    margin: 0;
+    margin-top: auto;
     padding: 10px;
     text-align: center;
     float: bottom;
+}
+.max_height {
+    height: max-content;
 }
 textarea, input[type=number], input[type=url]
 {

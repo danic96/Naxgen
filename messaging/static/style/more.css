@@ -3,7 +3,10 @@ h1 a, h2 a {
     font-family: 'Lobster';
 }
 body, html {
-    height: 90%;
+    min-height: 100%;
+}
+html {
+    min-height: 100%;
 }
 
 .page-header {

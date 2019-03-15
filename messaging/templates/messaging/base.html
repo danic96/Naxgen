@@ -37,6 +37,8 @@
     {% endblock %}
 </div>
 
+<div id="wrapp_this">
+<div class="max_height">
 <div id="left-sidebar">
     {% block sidebar %}
             <h2><a href="/messaging/">Home</a></h2>
@@ -84,10 +86,14 @@
         {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
     {% endblock %}
 </div>
+</div>
 
 <div id="footer">
     {% block footer %}<hr><div >Developed by <b>Vikton</b> and <b>danic96</b></div>{% endblock %}
 </div>
+</div>
+
+
 
 
 </body>
