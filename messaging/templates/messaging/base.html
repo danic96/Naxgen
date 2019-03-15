@@ -43,13 +43,13 @@
                 <h1><li>Chats</li></h1>
                 <h3><a href="{% url 'messaging:group_create' %}" >New Chat</a></h3>
 
+                <ul>
                 {% for group in user.groups.all %}
-                    <ul>
-                        <li>
-                            <a href="{% url 'messaging:group_detail' group.id %}" > {{ group.name }} </a>
-                        </li>
-                    </ul>
+                    <li>
+                        <a href="{% url 'messaging:group_detail' group.id %}" > {{ group.name }} </a>
+                    </li>
                 {% endfor %}
+                </ul>
 
             {% endif %}
     {% endblock %}
@@ -59,16 +59,20 @@
     {% block sidebar2 %}
         {% if user.username %}
             <h2>Your friends:</h2>
+                <ul>
                 {% for friend in request.user.friends.all %}
                     <li type="circle">
+                        <div id="wrapper">
                         <a href="{% url 'messaging:view_profile_with_pk' pk=friend.pk %} " >
-                            <h5>{{ friend.username }}</h5>
+                            {{ friend.username }}
                         </a>
                         <a href="{% url 'messaging:change_friend' operation='remove' pk=friend.pk %}" >
-                            <button type="button" class="btn btn-default">Remove</button>
+                            <button id="remove-button" type="button" class="btn btn-default">Remove</button>
                         </a>
+                        </div>
                     </li>
                 {% endfor %}
+                </ul>
         {% endif %}
     {% endblock %}
 </div>

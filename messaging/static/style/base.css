@@ -73,5 +73,11 @@ textarea, input[type=number], input[type=url]
 {
     width: 100%;
     display: inline-block;
+    margin: 5px;
     /*border: 2px dotted black;*/
+}
+
+/* FRIENDS THINGS */
+#remove-button {
+    float: right;
 }
