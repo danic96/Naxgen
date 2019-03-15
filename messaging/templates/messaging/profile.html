@@ -12,6 +12,15 @@
         <h1>Your profile</h1>
     {% else %}
         <h1>{{ user.username }}'s profile</h1>
+        {% if user in friends %}
+            <a href="{% url 'messaging:change_friend' operation='remove' pk=user.pk %}" >
+                <button type="button" class="btn btn-default">REMOVE FRIEND</button>
+            </a>
+        {% else %}
+            <a href="{% url 'messaging:change_friend' operation='add' pk=user.pk %}" >
+                <button type="button" class="btn btn-default">ADD FRIEND</button>
+            </a>
+        {% endif %}
     {% endif %}
     <p>Username: {{ user }}</p>
     <p>First name: {{ user.first_name }}</p>
@@ -21,7 +30,8 @@
     <p>Phone: {{ user.phone }}</p>
     <p>City: {{ user.city }}</p>
     <p>Website: {{ user.website }}</p>
-    <img src="{{ '/' }}" width="240">
-</div>
 
+    <img src="{{ '/' }}" width="240">
+
+</div>
 {% endblock %}
