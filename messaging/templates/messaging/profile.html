@@ -17,6 +17,7 @@
         {% if user in request.user.friends.all %}
             <a href="{% url 'messaging:change_friend' operation='remove' pk=user.pk %}" >
                 <button type="button" class="btn btn-default">REMOVE FRIEND</button>
+            </a>
         {% else %}
             <a href="{% url 'messaging:change_friend' operation='add' pk=user.pk %}" >
                 <button type="button" class="btn btn-default">ADD FRIEND</button>
