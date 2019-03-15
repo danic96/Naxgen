@@ -3,65 +3,78 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <script src="http://code.jquery.com/jquery-2.2.3.js"></script>
     <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <link rel="stylesheet" href="{% static "style/base.css" %}" />
-    <title>Messaging{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static "style/more.css" %}" />
+    <title>Naxgen{% block title %}{% endblock %}</title>
 </head>
 
 <body>
 
-<div id="header">
+<div id="header" class="page-header">
     {% block header %}
-        {% if user.username %}
-            <p>User: {{ request.user.username }} | <a href="{% url 'logout' %}?next={{request.path}}">logout</a></p>
-        {% else %}
-            <p>
-                <a href="{% url 'login' %}?next={{request.path}}">Login</a>
-                /
-                <a href="{% url 'messaging:user_create' %}">Register</a>
-            </p>
-        {% endif %}
+        <div id="wrapper">
+            <div id="title">
+                <h1><a href="/messaging/">Naxgen</a></h1>
+            </div>
+            <h3>
+            {% if user.username %}
+                <p>
+                        User: {{ request.user.username }} | <a href="{% url 'logout' %}?next={{request.path}}">logout</a>
+                </p>
+            {% else %}
+                <p>
+                    <a href="{% url 'login' %}?next={{request.path}}">Login</a>
+                    /
+                    <a href="{% url 'messaging:user_create' %}">Register</a>
+                </p>
+            {% endif %}
+            </h3>
+        </div>
     {% endblock %}
 </div>
 
-<div id="sidebar">
+<div id="left-sidebar">
     {% block sidebar %}
-        <ul>
-            <h1><li><a href="/messaging/">Home</a></li></h1>
+            <h2><a href="/messaging/">Home</a></h2>
             {% if user.username %}
                 <h3> <a href="{% url 'messaging:view_profile' %}">Your Profile</a></h3>
                 <h1><li>Chats</li></h1>
-                <h3><a href="{% url 'messaging:group_create' %}" >Create chat</a></h3>
+                <h3><a href="{% url 'messaging:group_create' %}" >New Chat</a></h3>
 
+                <ul>
                 {% for group in user.groups.all %}
-                    <ul>
-                        <li>
-                            <a href="{% url 'messaging:group_detail' group.id %}" > {{ group.name }} </a>
-                        </li>
-                    </ul>
+                    <li>
+                        <a href="{% url 'messaging:group_detail' group.id %}" > {{ group.name }} </a>
+                    </li>
                 {% endfor %}
+                </ul>
 
             {% endif %}
-        </ul>
-
     {% endblock %}
 </div>
 
-<div id="sidebar2">
+<div id="right-sidebar">
     {% block sidebar2 %}
         {% if user.username %}
             <h2>Your friends:</h2>
+                <ul>
                 {% for friend in request.user.friends.all %}
                     <li type="circle">
+                        <div id="wrapper">
                         <a href="{% url 'messaging:view_profile_with_pk' pk=friend.pk %} " >
-                            <h5>{{ friend.username }}</h5>
+                            {{ friend.username }}
                         </a>
                         <a href="{% url 'messaging:change_friend' operation='remove' pk=friend.pk %}" >
-                            <button type="button" class="btn btn-default">REMOVE FRIEND</button>
+                            <button id="remove-button" type="button" class="btn btn-default">Remove</button>
                         </a>
+                        </div>
                     </li>
                 {% endfor %}
+                </ul>
         {% endif %}
     {% endblock %}
 </div>
@@ -73,7 +86,7 @@
 </div>
 
 <div id="footer">
-    {% block footer %}{% endblock %}
+    {% block footer %}<hr><div >Developed by <b>Vikton</b> and <b>danic96</b></div>{% endblock %}
 </div>
 
 

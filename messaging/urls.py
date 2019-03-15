@@ -24,6 +24,11 @@ urlpatterns = [
         MessageCreate.as_view(),
         name='message_create'),
 
+    # URL FOR SENDING REPLY TO MESSAGE
+    url(r'^message/(?P<pk>\d+)/reply/$',
+        send_reply,
+        name='message_reply'),
+
     # URL FOR READING MESSAGE
     url(r'^message/(?P<pk>\d+)/$',
         MessageDetail.as_view(),
@@ -48,12 +53,6 @@ urlpatterns = [
     url(r'^connect/(?P<operation>.+)/(?P<pk>\d+)/$',
         views.change_friend,
         name='change_friend'),
-
-    # URL FOR SENDING REPLY TO MESSAGE
-    url(r'^message/(?P<pk>\d+)/$',
-        send_reply,
-        name='message_reply'),
-
 
     # URL FOR VIEWING YOUR PROFILE
     url(r'^profile/$',
