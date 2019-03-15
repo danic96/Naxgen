@@ -8,7 +8,8 @@
     margin-left: 190px;
     margin-right: 190px;
     padding: 10px;
-    height: 90%;
+    /* height: 90%; */
+    height: auto;
 }
 #left-sidebar
 {
