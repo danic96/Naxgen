@@ -1,4 +1,5 @@
 {% extends "messaging/base.html" %}
+{% load staticfiles %}
 
 {% block title %}
     - User Profile
@@ -21,7 +22,7 @@
     <p>Phone: {{ user.phone }}</p>
     <p>City: {{ user.city }}</p>
     <p>Website: {{ user.website }}</p>
-    <img src="{{ '/' }}" width="240">
+    <img src="{% static "images/photo_profile_example.png" %}" width="240">
 </div>
 
 {% endblock %}
