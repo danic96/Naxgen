@@ -25,7 +25,7 @@ class Message(models.Model):
     to = models.ForeignKey(User, on_delete=models.PROTECT, related_name='to')
 
     def get_absolute_url(self):
-        return reverse('messaging:message_list', kwargs={})
+        return reverse('messaging:message_detail', kwargs={id})
 
 
 class Group(models.Model):
