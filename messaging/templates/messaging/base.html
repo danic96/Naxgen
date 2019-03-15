@@ -20,7 +20,11 @@
             <h1><a href="/messaging/">Naxgen</a></h1>
         </div>
         {% if user.username %}
-            <p>User: {{ request.user.username }} | <a href="{% url 'logout' %}?next={{request.path}}">logout</a></p>
+            <p>
+                <h3>
+                    User: {{ request.user.username }} | <a href="{% url 'logout' %}?next={{request.path}}">logout</a>
+                </h3>
+            </p>
         {% else %}
             <p>
                 <a href="{% url 'login' %}?next={{request.path}}">Login</a>
