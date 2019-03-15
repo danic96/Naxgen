@@ -81,6 +81,11 @@ textarea, input[type=number], input[type=url]
     /*border: 2px dotted black;*/
 }
 
+/* TEMPORAL FIX FOR TEXTAREA ROWS */
+textarea {
+    height: 100px;
+}
+
 /* FRIENDS THINGS */
 #remove-button {
     float: right;
