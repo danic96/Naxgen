@@ -1,8 +1,6 @@
 
 #header
 {
-    margin: 0;
-    padding: 10px;
     text-align: right;
 }
 #content
@@ -10,17 +8,22 @@
     margin-left: 190px;
     margin-right: 190px;
     padding: 10px;
+    height: 90%;
 }
-#sidebar
+#left-sidebar
 {
     float: left;
     width: 190px;
+    height: 100%;
+    padding-left: 10px;
+    background: #FFFDDD;
 }
 
-#sidebar2
+#right-sidebar
 {
     float: right;
     width: 190px;
+    padding-right: 10px;
 }
 
 #footer
@@ -28,6 +31,7 @@
     margin: 0;
     padding: 10px;
     text-align: center;
+    float: bottom;
 }
 textarea, input[type=number], input[type=url]
 {
@@ -40,6 +44,7 @@ textarea, input[type=number], input[type=url]
     margin: 5px;
     padding: 5px;
     word-break: break-word;
+    border-radius: 1em;
 }
 #messages
 {
@@ -47,6 +52,7 @@ textarea, input[type=number], input[type=url]
     padding: 10px;
     display: inline-block;
     max-width: 95%;
+    border-radius: 1em;
 }
 #message_from
 {
@@ -71,5 +77,11 @@ textarea, input[type=number], input[type=url]
 {
     width: 100%;
     display: inline-block;
+    margin: 5px;
     /*border: 2px dotted black;*/
+}
+
+/* FRIENDS THINGS */
+#remove-button {
+    float: right;
 }

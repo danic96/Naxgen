@@ -18,11 +18,13 @@ from django.urls import path, include
 from django.conf.urls import url
 from django.contrib.auth.views import LoginView, LogoutView
 
-from messaging import views
+from django.views.generic import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^messaging/', include(('messaging.urls', 'messaging'), namespace='messaging')),
     url(r'^login/$', LoginView.as_view(), name='login'),
     url(r'^logout/$', LogoutView.as_view(), name='logout'),
+    # REDIRECT ALWAYS TO APP messaging
+    url(r'^$', RedirectView.as_view(url='/messaging/')),
 ]
