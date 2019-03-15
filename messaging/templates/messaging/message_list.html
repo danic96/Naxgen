@@ -12,6 +12,7 @@
     {% if user.username %}(<a href="{% url 'messaging:message_create' %}">Write new</a>){% endif %}
 </h1>
 <ul>
+    {% if user.username %}
     {% for message in latest_message_list %}
         {% if user.username == message.to.username %}
             <li><a href="{% url 'messaging:message_detail' message.id %}">
@@ -20,5 +21,8 @@
         {% endif %}
     {% empty %}<li>Sorry, no messages registered yet.</li>
     {% endfor %}
+    {% else %}
+        <div>Please login to see messages</div>
+    {% endif %}
 </ul>
 {% endblock %}
