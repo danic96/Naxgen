@@ -9,13 +9,13 @@
     margin-right: 190px;
     padding: 10px;
 }
-#sidebar
+#left-sidebar
 {
     float: left;
     width: 190px;
 }
 
-#sidebar2
+#right-sidebar
 {
     float: right;
     width: 190px;
