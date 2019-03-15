@@ -1,38 +1,49 @@
+html {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+
+}
+body {
+    flex-wrap: wrap;
+    height: 100%;
+}
 
 #header
 {
     text-align: right;
 }
+#flex-middel {
+    display: flex;
+    justify-content: space-between;
+}
+#flex-middel-footer {
+    min-height: 85%;
+}
 #content
 {
-    margin-left: 190px;
-    margin-right: 190px;
+    width: 70%;
     padding: 10px;
-    /* height: 90%; */
-    height: auto;
+    text-align: left;
 }
 #left-sidebar
 {
-    float: left;
     width: 190px;
-    height: 100%;
     padding-left: 10px;
     background: #FFFDDD;
 }
 
 #right-sidebar
 {
-    float: right;
     width: 190px;
     padding-right: 15px;
 }
 
 #footer
 {
-    margin: 0;
+    margin-top: unset;
     padding: 10px;
-    text-align: center ;
-    width: 100%;
+    text-align: center;
 
 }
 textarea, input[type=number], input[type=url]

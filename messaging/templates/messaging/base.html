@@ -37,7 +37,8 @@
     {% endblock %}
 </div>
 
-<div id="wrapper" class="max-height" name="content+sidebars">
+<div id="flex-middel-footer">
+<div id="flex-middel">
 
 <div id="left-sidebar">
     {% block sidebar %}
@@ -56,6 +57,12 @@
                 </ul>
 
             {% endif %}
+    {% endblock %}
+</div>
+
+<div id="content">
+    {% block content %}
+        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
     {% endblock %}
 </div>
 
@@ -81,17 +88,13 @@
     {% endblock %}
 </div>
 
-<div id="content">
-    {% block content %}
-        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-    {% endblock %}
 </div>
-</div>
+
 
 <div id="footer">
     {% block footer %}<hr><div >Developed by <b>Vikton</b> and <b>danic96</b></div>{% endblock %}
 </div>
-
+</div>
 
 </body>
 </html>

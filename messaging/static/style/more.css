@@ -3,15 +3,7 @@ h1 a, h2 a {
     font-family: 'Lobster';
 }
 /* PERSONAL */
-html {
-    height: 100%;
-}
-body {
-    width: 100%;
-    min-height: 100%;
-    padding: 0;
-    margin: 0;
-}
+
 /*
 html {
     min-height: 100%;
