@@ -20,21 +20,19 @@
             <div id="title">
                 <h1><a href="/messaging/">Naxgen</a></h1>
             </div>
+            <h3>
             {% if user.username %}
                 <p>
-                    <h3>
                         User: {{ request.user.username }} | <a href="{% url 'logout' %}?next={{request.path}}">logout</a>
-                    </h3>
                 </p>
             {% else %}
                 <p>
-                    <h3>
                     <a href="{% url 'login' %}?next={{request.path}}">Login</a>
                     /
                     <a href="{% url 'messaging:user_create' %}">Register</a>
-                    </h3>
                 </p>
             {% endif %}
+            </h3>
         </div>
     {% endblock %}
 </div>
