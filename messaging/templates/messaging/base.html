@@ -16,6 +16,7 @@
 
 <div id="header" class="page-header">
     {% block header %}
+        <div id="wrapper">
         <div id="title">
             <h1><a href="/messaging/">Naxgen</a></h1>
         </div>
@@ -32,6 +33,7 @@
                 <a href="{% url 'messaging:user_create' %}">Register</a>
             </p>
         {% endif %}
+        </div>
     {% endblock %}
 </div>
 
