@@ -8,6 +8,8 @@ from django.views.generic.edit import CreateView, UpdateView
 
 from messaging.forms import *
 from messaging.models import *
+from .forms import UserForm
+from django.db.models import Q
 
 # Create your views here.
 
@@ -134,7 +136,12 @@ def view_profile(request, pk=None):
 
 
 def search(request):
-    if request.POST:
-        results = User.objects.filter(username=request.POST.get('search', False))
-        dic = {'results': results}
-        return render(request=request, template_name="messaging/search_users.html", context=dic)
+    filter_string = request.POST['search']
+    if filter_string is not None:
+        results = User.objects.filter(Q(username__contains=filter_string) | Q(first_name__contains=filter_string)
+                                    | Q(last_name__contains=filter_string) | Q(email__contains=filter_string)
+                                    | Q(description__contains=filter_string) | Q(phone__contains=filter_string)
+                                    | Q(city__contains=filter_string) | Q(website__contains=filter_string))
+        return render(request=request, template_name="messaging/search_users.html", context={'results': results})
+    else:
+        return redirect('messaging:message_list')

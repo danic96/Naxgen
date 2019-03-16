@@ -11,7 +11,9 @@
 <p>
     <ul>
     {% for member in group.members.all %}
-        <li> {{ member.username }} </li>
+        <a href="{% url 'messaging:view_profile_with_pk' pk=member.pk %} " >
+            <li> {{ member.username }} </li>
+        </a>
     {% endfor %}
     </ul>
 

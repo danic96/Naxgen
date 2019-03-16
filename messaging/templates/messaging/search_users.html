@@ -9,11 +9,16 @@
 
 <div class="container">
     <ul>
-        <h4>{{ search }}</h4>
-        <h4>{{ results }}</h4>
-        {% for x in results %}
-            <h4>{{ x }}</h4>
-            {% empty %} <h4>Sorry, there isn't any user with that name</h4>
+        <h1>Users search result:</h1>
+        {% for res in results %}
+            {% if res.username != "admin" %}
+                <li type="circle">
+                    <a href="{% url 'messaging:view_profile_with_pk' pk=res.pk %} " >
+                        <h4>{{ res.username }}</h4>
+                    </a>
+                </li>
+            {% endif %}
+            {% empty %} <h4>Sorry, any user was found with that query</h4>
         {% endfor %}
     </ul>
 </div>
