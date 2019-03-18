@@ -26,6 +26,7 @@ class UserCreate(CreateView):
         return super(UserCreate, self).form_valid(form)
 
 
+# @login_required(login_url='/')
 class MessageCreate(CreateView):
     model = Message
     template_name = 'messaging/form.html'
@@ -42,6 +43,7 @@ class MessageCreate(CreateView):
         return super(MessageCreate, self).form_valid(form)
 
 
+# @login_required(login_url='/')
 class GroupCreate(CreateView):
     model = Group
     template_name = 'messaging/form.html'
@@ -57,6 +59,7 @@ class GroupCreate(CreateView):
         return super(GroupCreate, self).form_valid(form)
 
 
+# @login_required(login_url='/')
 class MessageDetail(DetailView):
     model = Message
     template_name = 'messaging/message_detail.html'
@@ -66,6 +69,7 @@ class MessageDetail(DetailView):
         return context
 
 
+# @login_required(login_url='/')
 class GroupDetail(DetailView):
     model = Group
     template_name = 'messaging/group_detail.html'
@@ -75,7 +79,7 @@ class GroupDetail(DetailView):
         return context
 
 
-@login_required(login_url='/')
+# @login_required(login_url='/')
 class GroupUpdate(UpdateView):
     model = Group
     fields = ['members']
@@ -94,6 +98,7 @@ class GroupUpdate(UpdateView):
         return super(GroupUpdate, self).form_valid(form)
 
 
+@login_required(login_url='/')
 def group_message_create(request, pk):
     group = get_object_or_404(Group, pk=pk)
     message = GroupMessage(
@@ -107,6 +112,7 @@ def group_message_create(request, pk):
                                 args=(group.id,)))
 
 
+@login_required(login_url='/')
 def send_reply(request, pk):
     message = Message.objects.get(pk=pk)
 
@@ -120,6 +126,8 @@ def send_reply(request, pk):
     return HttpResponseRedirect(reverse('messaging:message_detail',
                                         args=(pk,)))
 
+
+@login_required(login_url='/')
 def change_friend(request, operation, pk):
     friend = User.objects.get(pk=pk)
     if operation == 'add':
