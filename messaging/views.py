@@ -11,6 +11,8 @@ from messaging.models import *
 from .forms import UserForm
 from django.db.models import Q
 
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 
 
@@ -73,6 +75,7 @@ class GroupDetail(DetailView):
         return context
 
 
+@login_required(login_url='/')
 class GroupUpdate(UpdateView):
     model = Group
     fields = ['members']
@@ -126,6 +129,7 @@ def change_friend(request, operation, pk):
     return redirect('messaging:message_list')
 
 
+@login_required(login_url='/')
 def view_profile(request, pk=None):
     if pk:
         user = User.objects.get(pk=pk)
