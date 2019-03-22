@@ -13,8 +13,8 @@
         {% for res in results %}
             {% if res.username != "admin" %}
                 <li type="circle">
-                    <a href="{% url 'messaging:view_profile_with_pk' pk=res.pk %} " >
-                        <h4>{{ res.username }}</h4>
+                    <a id="search_link" href="{% url 'messaging:view_profile_with_pk' pk=res.pk %}">
+                        {{ res.username }}
                     </a>
                 </li>
             {% endif %}

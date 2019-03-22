@@ -1,12 +1,8 @@
 from django.conf.urls import url
 from django.contrib.auth.decorators import login_required
 
-from django.utils import timezone
 from django.views.generic import DetailView, ListView, UpdateView
 
-from messaging import views
-from messaging.models import *
-from messaging.forms import *
 from messaging.views import *
 from . import  views
 
@@ -21,7 +17,7 @@ urlpatterns = [
 
     # URL FOR SENDING A MESSAGE
     url(r'^message/create/$',
-        MessageCreate.as_view(),
+        login_required(MessageCreate.as_view(), login_url='/'),
         name='message_create'),
 
     # URL FOR SENDING REPLY TO MESSAGE
@@ -31,7 +27,7 @@ urlpatterns = [
 
     # URL FOR READING MESSAGE
     url(r'^message/(?P<pk>\d+)/$',
-        MessageDetail.as_view(),
+        login_required(MessageDetail.as_view(), login_url='/'),
         name='message_detail'),
 
     # URL FOR CREATING USER
@@ -41,12 +37,12 @@ urlpatterns = [
 
     # URL FOR CREATING A GROUP
     url(r'^group/create/$',
-        GroupCreate.as_view(),
+        login_required(GroupCreate.as_view(), login_url='/'),
         name='group_create'),
 
     # URL FOR VIEWING GROUP
     url(r'^group/(?P<pk>\d+)/$',
-        GroupDetail.as_view(),
+        login_required(GroupDetail.as_view(), login_url='/'),
         name='group_detail'),
 
     # URL FOR ADDING OR DELETING USERS
@@ -76,6 +72,6 @@ urlpatterns = [
 
     # Add user/s to group alternative
     url(r'^group/(?P<pk>\d+)/edit',
-        GroupUpdate.as_view(),
+        login_required(GroupUpdate.as_view(), login_url='/'),
         name='group_users_edit'),
 ]

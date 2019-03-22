@@ -1,6 +1,5 @@
-from django.http import HttpResponseRedirect, HttpResponse
-from django.shortcuts import get_object_or_404, redirect, render_to_response
-from django.template import loader, Context
+from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404, redirect
 from django.views.generic import DetailView
 from django.shortcuts import render
 
@@ -10,6 +9,8 @@ from messaging.forms import *
 from messaging.models import *
 from .forms import UserForm
 from django.db.models import Q
+
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -91,6 +92,7 @@ class GroupUpdate(UpdateView):
         return super(GroupUpdate, self).form_valid(form)
 
 
+@login_required(login_url='/')
 def group_message_create(request, pk):
     group = get_object_or_404(Group, pk=pk)
     message = GroupMessage(
@@ -104,6 +106,7 @@ def group_message_create(request, pk):
                                 args=(group.id,)))
 
 
+@login_required(login_url='/')
 def send_reply(request, pk):
     message = Message.objects.get(pk=pk)
 
@@ -117,6 +120,8 @@ def send_reply(request, pk):
     return HttpResponseRedirect(reverse('messaging:message_detail',
                                         args=(pk,)))
 
+
+@login_required(login_url='/')
 def change_friend(request, operation, pk):
     friend = User.objects.get(pk=pk)
     if operation == 'add':
@@ -126,6 +131,7 @@ def change_friend(request, operation, pk):
     return redirect('messaging:message_list')
 
 
+@login_required(login_url='/')
 def view_profile(request, pk=None):
     if pk:
         user = User.objects.get(pk=pk)
@@ -135,6 +141,7 @@ def view_profile(request, pk=None):
     return render(request, 'messaging/profile.html', args)
 
 
+@login_required(login_url='/')
 def search(request):
     filter_string = request.POST['search']
     if filter_string is not None:

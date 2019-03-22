@@ -29,7 +29,7 @@ class Message(models.Model):
     to = models.ForeignKey(User, on_delete=models.PROTECT, related_name='to')
 
     def get_absolute_url(self):
-        return reverse('messaging:message_detail', kwargs={id})
+        return reverse('messaging:message_list', kwargs={})
 
 
 class Group(models.Model):

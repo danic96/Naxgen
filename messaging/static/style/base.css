@@ -93,3 +93,8 @@ textarea, input[type=number], input[type=url]
 #remove-button {
     float: right;
 }
+
+/* SEARCH BAR AND RESULTS */
+#search_link {
+    font-size: 18px;
+}
