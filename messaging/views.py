@@ -11,29 +11,8 @@ from .forms import UserForm
 from django.db.models import Q
 
 from django.contrib.auth.decorators import login_required
-from django.utils.decorators import method_decorator
-from django.core.exceptions import PermissionDenied
 
 # Create your views here.
-
-
-class LoginRequiredMixin(object):
-    @method_decorator(login_required())
-    def dispatch(self, *args, **kwargs):
-        return super(LoginRequiredMixin, self).dispatch(*args, **kwargs)
-
-
-class CheckIsOwnerMixin(object):
-    def get_object(self, *args, **kwargs):
-        obj = super(CheckIsOwnerMixin, self).get_object(*args, **kwargs)
-        if not obj.user == self.request.user:
-            raise PermissionDenied
-        return obj
-
-
-class LoginRequiredCheckIsOwnerUpdateView(LoginRequiredMixin, CheckIsOwnerMixin, UpdateView):
-    template_name = 'messaging/form.html'
-
 
 
 class UserCreate(CreateView):
@@ -46,7 +25,6 @@ class UserCreate(CreateView):
         return super(UserCreate, self).form_valid(form)
 
 
-# @login_required(login_url='/')
 class MessageCreate(CreateView):
     model = Message
     template_name = 'messaging/form.html'
@@ -63,7 +41,6 @@ class MessageCreate(CreateView):
         return super(MessageCreate, self).form_valid(form)
 
 
-# @login_required(login_url='/')
 class GroupCreate(CreateView):
     model = Group
     template_name = 'messaging/form.html'
@@ -79,7 +56,6 @@ class GroupCreate(CreateView):
         return super(GroupCreate, self).form_valid(form)
 
 
-# @login_required(login_url='/')
 class MessageDetail(DetailView):
     model = Message
     template_name = 'messaging/message_detail.html'
@@ -89,7 +65,6 @@ class MessageDetail(DetailView):
         return context
 
 
-# @login_required(login_url='/')
 class GroupDetail(DetailView):
     model = Group
     template_name = 'messaging/group_detail.html'
@@ -99,7 +74,6 @@ class GroupDetail(DetailView):
         return context
 
 
-# @login_required(login_url='/')
 class GroupUpdate(UpdateView):
     model = Group
     fields = ['members']
@@ -167,6 +141,7 @@ def view_profile(request, pk=None):
     return render(request, 'messaging/profile.html', args)
 
 
+@login_required(login_url='/')
 def search(request):
     filter_string = request.POST['search']
     if filter_string is not None:

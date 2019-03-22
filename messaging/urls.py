@@ -1,12 +1,8 @@
 from django.conf.urls import url
 from django.contrib.auth.decorators import login_required
 
-from django.utils import timezone
 from django.views.generic import DetailView, ListView, UpdateView
 
-from messaging import views
-from messaging.models import *
-from messaging.forms import *
 from messaging.views import *
 from . import  views
 
@@ -21,7 +17,7 @@ urlpatterns = [
 
     # URL FOR SENDING A MESSAGE
     url(r'^message/create/$',
-        MessageCreate.as_view(),
+        login_required(MessageCreate.as_view(), login_url='/'),
         name='message_create'),
 
     # URL FOR SENDING REPLY TO MESSAGE
@@ -41,7 +37,7 @@ urlpatterns = [
 
     # URL FOR CREATING A GROUP
     url(r'^group/create/$',
-        GroupCreate.as_view(),
+        login_required(GroupCreate.as_view(), login_url='/'),
         name='group_create'),
 
     # URL FOR VIEWING GROUP
