@@ -27,7 +27,7 @@ urlpatterns = [
 
     # URL FOR READING MESSAGE
     url(r'^message/(?P<pk>\d+)/$',
-        MessageDetail.as_view(),
+        login_required(MessageDetail.as_view(), login_url='/'),
         name='message_detail'),
 
     # URL FOR CREATING USER
@@ -42,7 +42,7 @@ urlpatterns = [
 
     # URL FOR VIEWING GROUP
     url(r'^group/(?P<pk>\d+)/$',
-        GroupDetail.as_view(),
+        login_required(GroupDetail.as_view(), login_url='/'),
         name='group_detail'),
 
     # URL FOR ADDING OR DELETING USERS
@@ -72,6 +72,6 @@ urlpatterns = [
 
     # Add user/s to group alternative
     url(r'^group/(?P<pk>\d+)/edit',
-        GroupUpdate.as_view(),
+        login_required(GroupUpdate.as_view(), login_url='/'),
         name='group_users_edit'),
 ]
