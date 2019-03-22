@@ -10,7 +10,9 @@ Avaible users are:
     
     - admin
     - danic96
+    - danic98
     - vikton
+    - vikton1
 
 All default passwords are: 
 
