@@ -31,12 +31,12 @@
                 <div id="message_own" class="message">
                     {{ message.text }}
                     <div id="message_information">
-                        {{ message.date }}
+                        {{ message.date|linebreaks }}
                     </div>
                 </div><br>
             {% else %}
                 <div id="message_from" class="message">
-                    {{ message.text }} <br>
+                    {{ message.text|linebreaks }} <br>
                     <div id="message_information">
                         by {{ message.from_user }} - {{ message.date }}
                     </div>
