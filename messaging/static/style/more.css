@@ -2,18 +2,7 @@ h1 a, h2 a {
     color: #AAA439;
     font-family: 'Lobster';
 }
-/* PERSONAL */
 
-/*
-html {
-    min-height: 100%;
-    position: relative;
-}
-body {
-    height: 100%;
-    min-height: 100%;
-}
-*/
 .max-height {
     min-height: 100%;
 }

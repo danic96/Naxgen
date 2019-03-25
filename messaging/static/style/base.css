@@ -36,15 +36,25 @@ body {
 #right-sidebar
 {
     width: 190px;
-    padding-right: 15px;
+
+    height: 100%;
+    padding-right: 10px;
+}
+
+#wrapp_this {
+
 }
 
 #footer
 {
-    margin-top: unset;
+
+    margin-top: auto;
     padding: 10px;
     text-align: center;
 
+}
+.max_height {
+    height: max-content;
 }
 textarea, input[type=number], input[type=url]
 {
@@ -102,4 +112,9 @@ textarea {
 /* FRIENDS THINGS */
 #remove-button {
     float: right;
+}
+
+/* SEARCH BAR AND RESULTS */
+#search_link {
+    font-size: 18px;
 }

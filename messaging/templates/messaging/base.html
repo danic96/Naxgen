@@ -37,8 +37,9 @@
     {% endblock %}
 </div>
 
-<div id="flex-middel-footer">
-<div id="flex-middel">
+
+<div id="wrapp_this">
+<div class="max_height">
 
 <div id="left-sidebar">
     {% block sidebar %}
@@ -47,7 +48,6 @@
                 <h3> <a href="{% url 'messaging:view_profile' %}">Your Profile</a></h3>
                 <h1><li>Chats</li></h1>
                 <h3><a href="{% url 'messaging:group_create' %}" >New Chat</a></h3>
-
                 <ul>
                 {% for group in user.groups.all %}
                     <li>
@@ -88,6 +88,7 @@
     {% endblock %}
 </div>
 
+</div>
 </div>
 
 
