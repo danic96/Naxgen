@@ -1,6 +1,10 @@
 language: python
 python:
  - "3.6"
+ - "3.7"
+ 
+env:
+ -DJANGO=2.1
  
 install:
  - pip install -r requeriments.txt
@@ -9,4 +13,4 @@ branches:
   only:
     - master
     
-script: python manage.py makemigrations
+script: python manage.py test
