@@ -5,3 +5,8 @@ python:
 install:
  - pip install -r requeriments.txt
 
+branches:
+  only:
+    - master
+    
+script: python manage.py makemigrations
